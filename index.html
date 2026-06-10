@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clovis Hotel - Order Food</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🍽️ Clovis Hotel</h1>
+            <p class="subtitle">Order Your Favorite Food</p>
+            
+            <!-- Advertisement Banner -->
+            <div id="advertisementBanner" class="advertisement-banner">
+                <p id="advertisementText">Welcome to Clovis Hotel!</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-menu">
+            <button class="nav-btn active" data-category="all" onclick="filterByCategory('all')">All</button>
+            <div id="categoryButtons" class="category-buttons"></div>
+            <a href="admin.html" class="admin-link">⚙️ Admin Panel</a>
+            <a href="qr.html" class="admin-link">📱 QR Code</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Menu Items -->
+            <div id="menuContainer" class="menu-container">
+                <!-- Menu items will be loaded here -->
+            </div>
+
+            <!-- Order Summary -->
+            <aside class="order-summary">
+                <h2>📋 Your Order</h2>
+                <div id="orderItems" class="order-items">
+                    <p class="empty-order">No items selected</p>
+                </div>
+                <div class="order-total">
+                    <h3>Total: <span id="totalPrice">0</span> FBU</h3>
+                </div>
+                <button id="sendOrderBtn" class="send-order-btn" onclick="sendOrderToWhatsApp()">
+                    📱 Send Order to Waiter
+                </button>
+                <button id="clearOrderBtn" class="clear-order-btn" onclick="clearOrder()">
+                    🗑️ Clear Order
+                </button>
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Clovis Hotel. All rights reserved.</p>
+            <p>WhatsApp: <span id="displayPhoneNumber">0785277428</span></p>
+        </footer>
+    </div>
+
+    <!-- Modal for item details -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+            <div class="modal-buttons">
+                <button id="addToOrderBtn" class="btn-primary">Add to Order</button>
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

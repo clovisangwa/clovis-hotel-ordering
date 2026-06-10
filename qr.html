@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clovis Hotel - QR Code</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="qr-container">
+        <header class="qr-header">
+            <h1>📱 QR Code - Clovis Hotel Ordering</h1>
+            <a href="index.html" class="back-btn">← Back to Menu</a>
+        </header>
+
+        <div class="qr-content">
+            <section class="qr-section">
+                <h2>Scan to Order</h2>
+                <p>Share this QR code with your customers. They can scan it to access the menu and place orders!</p>
+                
+                <div class="qr-box">
+                    <div id="qrcode"></div>
+                </div>
+
+                <div class="qr-info">
+                    <h3>Current Link:</h3>
+                    <input type="text" id="currentUrl" readonly class="url-input">
+                    <button onclick="copyUrl()" class="btn-primary">📋 Copy Link</button>
+                </div>
+
+                <div class="qr-instructions">
+                    <h3>Instructions:</h3>
+                    <ol>
+                        <li>Customers can scan this QR code with their phone camera</li>
+                        <li>They will be directed to your ordering page</li>
+                        <li>Orders will be sent to your WhatsApp (0785277428)</li>
+                        <li>Print this QR code and place it on your tables!</li>
+                    </ol>
+                </div>
+
+                <button onclick="downloadQR()" class="btn-primary download-btn">⬇️ Download QR Code</button>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Get current page URL
+        const currentUrl = window.location.href.split('qr.html')[0] + 'index.html';
+        document.getElementById('currentUrl').value = currentUrl;
+
+        // Generate QR Code
+        new QRCode(document.getElementById('qrcode'), {
+            text: currentUrl,
+            width: 300,
+            height: 300,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        function copyUrl() {
+            const urlInput = document.getElementById('currentUrl');
+            urlInput.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        }
+
+        function downloadQR() {
+            const canvas = document.querySelector('#qrcode canvas');
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'clovis-hotel-qr-code.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>

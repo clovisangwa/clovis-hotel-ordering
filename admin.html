@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clovis Hotel - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>⚙️ Admin Panel - Clovis Hotel</h1>
+            <a href="index.html" class="back-btn">← Back to Menu</a>
+        </header>
+
+        <div class="admin-content">
+            <!-- Settings Section -->
+            <section class="admin-section">
+                <h2>📞 Settings</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="phoneNumber">Waiter WhatsApp Number:</label>
+                        <input type="text" id="phoneNumber" placeholder="e.g., 0785277428">
+                        <button onclick="savePhoneNumber()" class="btn-primary">Save Phone Number</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="advertisementText">Advertisement Banner Text:</label>
+                        <textarea id="advertisementText" placeholder="Enter advertisement text" rows="3"></textarea>
+                        <button onclick="saveAdvertisement()" class="btn-primary">Save Advertisement</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Food Section -->
+            <section class="admin-section">
+                <h2>➕ Add New Food Item</h2>
+                <div class="add-food-form">
+                    <div class="form-group">
+                        <label for="foodName">Food Name:</label>
+                        <input type="text" id="foodName" placeholder="e.g., Ugali with Beans">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodPrice">Price (FBU):</label>
+                        <input type="number" id="foodPrice" placeholder="e.g., 5000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodCategory">Category:</label>
+                        <input type="text" id="foodCategory" placeholder="e.g., Main Course">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodDescription">Description:</label>
+                        <textarea id="foodDescription" placeholder="Brief description of the food" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foodIcon">Emoji/Icon:</label>
+                        <input type="text" id="foodIcon" placeholder="e.g., 🍝" maxlength="2">
+                    </div>
+
+                    <button onclick="addFood()" class="btn-primary">Add Food Item</button>
+                </div>
+            </section>
+
+            <!-- Edit/Delete Foods Section -->
+            <section class="admin-section">
+                <h2>✏️ Edit or Delete Food Items</h2>
+                <div id="foodList" class="food-list">
+                    <!-- Food items will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
